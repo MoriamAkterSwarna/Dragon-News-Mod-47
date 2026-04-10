@@ -1,8 +1,6 @@
 import Image from "next/image";
 import logoImg from "../assets/logo.png";
 import { format } from "date-fns";
-import BreakingNews from "./BreakingNews";
-import Navbar from "./Navbar";
 const today = format(new Date(), "EEEE, MMMM dd, yyyy");
 
 export default function Header() {
@@ -20,10 +18,7 @@ export default function Header() {
 
       <p className="text-sm text-muted-foreground mt-4">{today}</p>
       
-      <>
-      <BreakingNews />
-      <Navbar />
-      </>
+      
     </div>
   );
 }
