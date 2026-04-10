@@ -1,3 +1,5 @@
+import LeftSidebar from "../components/LeftSidebar";
+import RightSidebar from "../components/RightSideBar";
 
 
 async function getCategories() {
@@ -14,9 +16,7 @@ const HomePage = async () => {
       <aside className="col-span-3">
         <p>Categories </p>
         
-         {
-            categories?.map((category) => ( <li key={category.id}>{category.name}</li>))
-         }
+         <LeftSidebar categories={categories} activeId={null} />
       </aside>
 
       <section className="col-span-6">
@@ -24,7 +24,7 @@ const HomePage = async () => {
       </section>
 
       <aside className="col-span-3">
-        <p>Right sidebar</p>
+        <RightSidebar/>
       </aside>
     </div>
   );
