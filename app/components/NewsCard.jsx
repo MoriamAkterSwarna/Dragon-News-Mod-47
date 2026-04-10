@@ -49,9 +49,9 @@ export default function NewsCard({ news }) {
             <FaEye /> {news.total_view}k
           </span>
         </div>
-        <Button  href={`/news/${news.id}`} size="sm" color="danger" radius="none">
+        <Link href={`/news/${news.id}`}  size="sm" color="danger" radius="none">
           Read More
-        </Button>
+        </Link>
       </Card.Footer>
     </Card>
   );
