@@ -31,8 +31,7 @@ const RegisterForm = () => {
       name,
       email,
       password,
-      photo,
-
+      image: photo, 
     });
     console.log(data, error);
     if (error) {

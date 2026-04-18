@@ -1,6 +1,6 @@
 import Link from "next/link";
 export default function LeftSidebar({ categories, activeId }) {
-    console.log(categories);
+    
   return (
     <div>
       <h3 className="font-bold text-lg border-b pb-2 mb-3">All Category</h3>
