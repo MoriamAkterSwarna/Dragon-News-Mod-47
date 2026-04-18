@@ -13,35 +13,35 @@ const LoginForm = () => {
 
   const router = useRouter();
   const [isPending, setIsPending] = useState(false);
-const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setIsPending(true);
-  setError("");
-  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsPending(true);
+    setError("");
 
-  const email = e.target.email.value;
-  const password = e.target.password.value;
-  
-  console.log(email, password);
 
-  const {data, error} = await signIn.email({
-    email,
-    password,
-  });
-  
-  setIsPending(false); 
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
-  if (error) {
-    setError(error.message);
-  }
+    console.log(email, password);
 
-  if (data) {
-    router.push("/");
-  }
+    const { data, error } = await signIn.email({
+      email,
+      password,
+    });
 
-};
+    setIsPending(false);
+
+    if (error) {
+      setError(error.message);
+    }
+
+    if (data) {
+      router.push("/");
+    }
+
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#f3f1f2] px-4">

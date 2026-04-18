@@ -13,16 +13,6 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
-    domains: [
-      "localhost",
-      "images.unsplash.com",
-      "avatars.githubusercontent.com",
-      "lh3.googleusercontent.com",
-      "graph.facebook.com",
-      "res.cloudinary.com",
-      "cdn.pixabay.com",
-      "images.pexels.com",
-    ],
   },
 };
 
