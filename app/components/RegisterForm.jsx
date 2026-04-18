@@ -5,9 +5,13 @@ import { Label } from "@heroui/react";
 import { Input } from "@heroui/react";
 import { Button } from "@heroui/react";
 import Link from "next/link";
-import React from "react";
+
 
 const RegisterForm = () => {
+   
+
+    
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#f3f1f2] px-4">
       <Card className="bg-white border border-white rounded-[5px] w-full max-w-188 p-12 shadow-lg">
@@ -18,7 +22,7 @@ const RegisterForm = () => {
           <div className="border-t border-[#E7E7E7]"></div>
         </Card.Header>
         <Card.Content>
-          <Form className="flex flex-col gap-8">
+          <Form  className="flex flex-col gap-8">
             <Input label="Your Name" placeholder="Enter your name" />
 
             <Input label="Photo URL" placeholder="Enter your photo URL" />
