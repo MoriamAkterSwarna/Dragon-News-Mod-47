@@ -1,3 +1,5 @@
+
+"use client";
 import { Checkbox } from "@heroui/react";
 import { Form } from "@heroui/react";
 import { Card } from "@heroui/react";
@@ -6,11 +8,43 @@ import { Input } from "@heroui/react";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 
+import { useState } from "react";
+import { signUp } from "../lib/auth-client";
+import { useRouter } from "next/navigation";
+
 
 const RegisterForm = () => {
-   
+  const router = useRouter();
+  const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState("");
 
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setIsPending(true);
+    const name = e.target.name.value;
+    const photo = e.target.photoURL.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    const { data, error } = await signUp.email({
+      name,
+      email,
+      password,
+      photo,
+
+    });
+    console.log(data, error);
+    if (error) {
+      setError(error.message);
+      setIsPending(false);
+      return;
+    }
+    setIsPending(false);
+    router.push("/login");
+  }
+
+
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#f3f1f2] px-4">
@@ -22,21 +56,23 @@ const RegisterForm = () => {
           <div className="border-t border-[#E7E7E7]"></div>
         </Card.Header>
         <Card.Content>
-          <Form  className="flex flex-col gap-8">
-            <Input label="Your Name" placeholder="Enter your name" />
+          <Form onSubmit={handleSubmit} className="flex flex-col gap-8">
+            <Input label="Your Name" placeholder="Enter your name" name="name" />
 
-            <Input label="Photo URL" placeholder="Enter your photo URL" />
+            <Input label="Photo URL" placeholder="Enter your photo URL" name="photoURL" />
 
             <Input
               type="email"
               label="Email"
               placeholder="Enter your email address"
+              name="email"
             />
 
             <Input
               type="password"
               label="Password"
               placeholder="Enter your password"
+              name="password"
             />
 
             <Checkbox id="basic-terms">
@@ -52,8 +88,9 @@ const RegisterForm = () => {
               type="submit"
               className="w-full h-16.25 bg-[#403f3f] text-white font-['Poppins'] font-semibold text-[20px]"
               radius="sm"
+              isDisabled={isPending}
             >
-              Register
+              {isPending ? "Registering..." : "Register"}
             </Button>
           </Form>
 
